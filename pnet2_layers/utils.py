@@ -37,9 +37,7 @@ def sample_and_group(npoint, radius, nsample, xyz, points, knn=False, use_xyz=Tr
 	return new_xyz, new_points, idx, grouped_xyz
 
 
-def sample_and_group_all(xyz, points, use_xyz=True):
-
-	batch_size = xyz.get_shape()[0]
+def sample_and_group_all(xyz, points, use_xyz=True, batch_size=8):
 	nsample = xyz.get_shape()[1]
 
 	new_xyz = tf.constant(np.tile(np.array([0,0,0]).reshape((1,1,3)), (batch_size,1,1)),dtype=tf.float32) # (batch_size, 1, 3)

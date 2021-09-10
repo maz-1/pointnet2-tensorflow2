@@ -35,7 +35,8 @@ class CLS_SSG_Model(Model):
 			mlp=[64, 64, 128],
 			group_all=False,
 			activation=self.activation,
-			bn = self.bn
+			bn = self.bn,
+			batch_size = self.batch_size
 		)
 
 		self.layer2 = Pointnet_SA(
@@ -45,7 +46,8 @@ class CLS_SSG_Model(Model):
 			mlp=[128, 128, 256],
 			group_all=False,
 			activation=self.activation,
-			bn = self.bn
+			bn = self.bn,
+			batch_size = self.batch_size
 		)
 
 		self.layer3 = Pointnet_SA(
@@ -55,7 +57,8 @@ class CLS_SSG_Model(Model):
 			mlp=[256, 512, 1024],
 			group_all=True,
 			activation=self.activation,
-			bn = self.bn
+			bn = self.bn,
+			batch_size = self.batch_size
 		)
 
 		self.dense1 = Dense(512, activation=self.activation)

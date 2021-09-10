@@ -54,7 +54,8 @@ class CLS_MSG_Model(Model):
 			mlp=[256, 512, 1024],
 			group_all=True,
 			activation=self.activation,
-			bn = self.bn
+			bn = self.bn,
+			batch_size = self.batch_size
 		)
 
 		self.dense1 = Dense(512, activation=self.activation)

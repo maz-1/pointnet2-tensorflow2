@@ -7,7 +7,7 @@ from . import utils
 class Pointnet_SA(Layer):
 
 	def __init__(
-		self, npoint, radius, nsample, mlp, group_all=False, knn=False, use_xyz=True, activation=tf.nn.relu, bn=False
+		self, npoint, radius, nsample, mlp, group_all=False, knn=False, use_xyz=True, activation=tf.nn.relu, bn=False, batch_size=8
 	):
 
 		super(Pointnet_SA, self).__init__()
@@ -21,6 +21,7 @@ class Pointnet_SA(Layer):
 		self.use_xyz = use_xyz
 		self.activation = activation
 		self.bn = bn
+		self.batch_size = batch_size
 
 		self.mlp_list = []
 
@@ -39,7 +40,12 @@ class Pointnet_SA(Layer):
 
 		if self.group_all:
 			nsample = xyz.get_shape()[1]
-			new_xyz, new_points, idx, grouped_xyz = utils.sample_and_group_all(xyz, points, self.use_xyz)
+			print("It breaks here!")
+			print("xyz", type(xyz), xyz)
+			print("points", type(points), points)
+			print("self.use_xyz", type(self.use_xyz), self.use_xyz)
+
+			new_xyz, new_points, idx, grouped_xyz = utils.sample_and_group_all(xyz, points, self.use_xyz, self.batch_size)
 		else:
 			new_xyz, new_points, idx, grouped_xyz = utils.sample_and_group(
 				self.npoint,
