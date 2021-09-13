@@ -4,7 +4,7 @@ from tensorflow.keras.layers import Layer, BatchNormalization
 import os
 
 # hacky way to allow running the code from network_server folder
-if "/pn2/" in os.getcwd():
+if "/pn2" in os.getcwd():
 	from . import utils
 else:
 	from pn2.pnet2_layers import utils

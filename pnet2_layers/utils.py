@@ -7,7 +7,7 @@ from tensorflow.keras.layers import MaxPool1D, Layer, BatchNormalization
 
 
 # hacky way to allow running the code from network_server folder
-if "/pn2/" in os.getcwd():
+if "/pn2" in os.getcwd():
 	from .cpp_modules import (
 		farthest_point_sample,
 		gather_point,

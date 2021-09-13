@@ -6,7 +6,7 @@ from tensorflow.python.framework import ops
 
 from tensorflow.keras.layers import MaxPool1D, Layer
 
-if "/pn2/" in os.getcwd():
+if "/pn2" in os.getcwd():
 	sampling_module=tf.load_op_library('./tf_ops/sampling/tf_sampling_so.so')
 	grouping_module=tf.load_op_library('./tf_ops/grouping/tf_grouping_so.so')
 	interpolate_module=tf.load_op_library('./tf_ops/3d_interpolation/tf_interpolate_so.so')
