@@ -40,11 +40,6 @@ class Pointnet_SA(Layer):
 
 		if self.group_all:
 			nsample = xyz.get_shape()[1]
-			print("It breaks here!")
-			print("xyz", type(xyz), xyz)
-			print("points", type(points), points)
-			print("self.use_xyz", type(self.use_xyz), self.use_xyz)
-
 			new_xyz, new_points, idx, grouped_xyz = utils.sample_and_group_all(xyz, points, self.use_xyz, self.batch_size)
 		else:
 			new_xyz, new_points, idx, grouped_xyz = utils.sample_and_group(
