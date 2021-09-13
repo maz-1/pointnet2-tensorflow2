@@ -7,8 +7,11 @@ import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense, Dropout
 
-from pnet2_layers.layers import Pointnet_SA, Pointnet_FP
-
+# hacky way to allow running the code from network_server folder
+if "/pn2/" in os.getcwd():
+	from pnet2_layers.layers import Pointnet_SA, Pointnet_FP
+else:
+	from pn2.pnet2_layers.layers import Pointnet_SA, Pointnet_FP
 
 class SEM_SEG_Model(Model):
 

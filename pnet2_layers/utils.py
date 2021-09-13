@@ -5,15 +5,28 @@ import tensorflow as tf
 
 from tensorflow.keras.layers import MaxPool1D, Layer, BatchNormalization
 
-from .cpp_modules import (
-	farthest_point_sample,
-	gather_point,
-	query_ball_point,
-	group_point,
-	knn_point,
-	three_nn,
-	three_interpolate
-)
+
+# hacky way to allow running the code from network_server folder
+if "/pn2/" in os.getcwd():
+	from .cpp_modules import (
+		farthest_point_sample,
+		gather_point,
+		query_ball_point,
+		group_point,
+		knn_point,
+		three_nn,
+		three_interpolate
+	)
+else:
+	from pn2.pnet2_layers.cpp_modules import (
+		farthest_point_sample,
+		gather_point,
+		query_ball_point,
+		group_point,
+		knn_point,
+		three_nn,
+		three_interpolate
+	)
 
 
 def sample_and_group(npoint, radius, nsample, xyz, points, knn=False, use_xyz=True):

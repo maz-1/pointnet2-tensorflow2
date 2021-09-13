@@ -7,8 +7,11 @@ import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Dense, Dropout, BatchNormalization
 
-from pnet2_layers.layers import Pointnet_SA, Pointnet_SA_MSG
-
+# hacky way to allow running the code from network_server folder
+if "/pn2/" in os.getcwd():
+	from pnet2_layers.layers import Pointnet_SA, Pointnet_SA_MSG
+else:
+	from pn2.pnet2_layers.layers import Pointnet_SA, Pointnet_SA_MSG
 
 class CLS_SSG_Model(Model):
 
