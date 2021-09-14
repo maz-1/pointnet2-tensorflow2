@@ -39,9 +39,14 @@ class Pointnet_SA(Layer):
 
 	def call(self, xyz, points, training=True):
 
+		# try:
 		if points is not None:
 			if len(points.shape) < 3:
 				points = tf.expand_dims(points, axis=0)
+		# except:
+		# 	print("this is really bad and should be removed...")
+		# 	print("shape of points:", points.shape, len(points))
+		# 	points = tf.expand_dims(points, axis=0)
 
 		if self.group_all:
 			nsample = xyz.get_shape()[1]
