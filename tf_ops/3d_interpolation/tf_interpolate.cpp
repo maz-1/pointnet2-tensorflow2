@@ -9,6 +9,10 @@
 #include "tensorflow/core/framework/common_shape_fns.h"
 using namespace tensorflow;
 
+#ifdef _MSC_VER
+#include "clock_gettime_win.hpp"
+#endif
+
 REGISTER_OP("ThreeNN")
     .Input("xyz1: float32")
     .Input("xyz2: float32")
