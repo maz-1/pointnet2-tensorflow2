@@ -66,7 +66,7 @@ def train():
 		keras.callbacks.TensorBoard(
 			'./logs/{}'.format(config['log_dir']), update_freq=50),
 		keras.callbacks.ModelCheckpoint(
-			'./logs/{}/model/weights.ckpt'.format(config['log_dir']), 'val_sparse_categorical_accuracy', save_best_only=True)
+			'./logs/{}/model/weights.ckpt'.format(config['log_dir']), 'val_sparse_categorical_accuracy', save_weights_only=True, save_best_only=True)
 	]
 
 	model.build(input_shape=(config['batch_size'], 8192, 3))
